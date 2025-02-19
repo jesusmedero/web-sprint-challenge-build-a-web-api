@@ -12,11 +12,11 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Pull your server into this file and start it!
 */
-require("dotenv").config(); // Cargar variables de entorno
+require("dotenv").config(); 
 
-const server = require("./api/server"); // Importar el servidor desde server.js
+const server = require("./api/server"); 
 
-const PORT = process.env.PORT || 9000; // Tomar el puerto de env o usar 9000
+const PORT = process.env.PORT || 9000; 
 
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

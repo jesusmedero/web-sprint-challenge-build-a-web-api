@@ -1,11 +1,11 @@
 // Write your "projects" router here!
 const express = require('express');
-const Projects = require('./projects-model'); // Importamos el modelo
+const Projects = require('./projects-model'); 
 const { validateProjectFields, checkProjectExists } = require('./projects-middleware');
 
 const router = express.Router();
 
-// Obtener todos los proyectos
+
 router.get('/', async (req, res) => {
     try {
         const projects = await Projects.get();
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Obtener un proyecto por ID
+
 router.get('/:id', async (req, res) => {
     try {
         const project = await Projects.get(req.params.id);
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// Crear un nuevo proyecto
+
 router.post('/', validateProjectFields, async (req, res) => {
     try {
         const newProject = await Projects.insert(req.body);
@@ -39,7 +39,7 @@ router.post('/', validateProjectFields, async (req, res) => {
     }
 });
 
-// Actualizar un proyecto
+
 router.put('/:id', checkProjectExists, validateProjectFields, async (req, res) => {
     try {
       const updatedProject = await Projects.update(req.params.id, req.body);
@@ -54,7 +54,7 @@ router.put('/:id', checkProjectExists, validateProjectFields, async (req, res) =
   });
 
 
-// Eliminar un proyecto
+
 router.delete('/:id', checkProjectExists, async (req, res) => {
     try {
         const deleted = await Projects.remove(req.params.id);
@@ -68,7 +68,7 @@ router.delete('/:id', checkProjectExists, async (req, res) => {
     }
 });
 
-// Obtener las acciones de un proyecto
+
 router.get('/:id/actions', async (req, res) => {
     try {
         const project = await Projects.get(req.params.id);

@@ -6,18 +6,18 @@ const server = express();
 // Build your projects router in /api/projects/projects-router.js
 // Do NOT `server.listen()` inside this file!
 
-server.use(express.json()); // Permite manejar JSON en las solicitudes
+server.use(express.json()); 
 
-// Importar routers
+
 const projectsRouter = require('../api/projects/projects-router');
-const actionsRouter = require('../api/actions/actions-router'); // Asegúrate de tener este archivo
+const actionsRouter = require('../api/actions/actions-router'); 
 
 
-// Usar routers
+
 server.use('/api/projects', projectsRouter);
-server.use('/api/actions', actionsRouter); // Agrega el router de acciones
+server.use('/api/actions', actionsRouter); 
 
-// Middleware para manejar errores (opcional pero recomendado)
+
 server.use((err, req, res, next) => {
   res.status(err.status || 500).json({
     message: err.message || 'Internal Server Error',

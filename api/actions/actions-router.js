@@ -1,11 +1,11 @@
 // Write your "actions" router here!
 const express = require('express');
-const Actions = require('./actions-model'); // Importamos el modelo de acciones
+const Actions = require('./actions-model'); 
 const { validateActionFields, checkActionExists } = require('./actions-middleware');
 
 const router = express.Router();
 
-// Obtener todas las acciones
+
 router.get('/', async (req, res) => {
   try {
     const actions = await Actions.get();
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Obtener una acción por ID
+
 router.get('/:id', async (req, res) => {
   try {
     const action = await Actions.get(req.params.id);
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Crear una nueva acción
+
 router.post('/', validateActionFields, async (req, res) => {
   try {
     const newAction = await Actions.insert(req.body);
@@ -39,7 +39,7 @@ router.post('/', validateActionFields, async (req, res) => {
   }
 });
 
-// Actualizar una acción existente
+
 router.put('/:id', checkActionExists, validateActionFields, async (req, res) => {
   try {
     const updatedAction = await Actions.update(req.params.id, req.body);
@@ -49,7 +49,7 @@ router.put('/:id', checkActionExists, validateActionFields, async (req, res) => 
   }
 });
 
-// Eliminar una acción
+
 router.delete('/:id', checkActionExists, async (req, res) => {
   try {
     await Actions.remove(req.params.id);
